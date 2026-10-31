@@ -11,23 +11,24 @@ A .Net 10 WPF (Windows Presentation Foundation) desktop app to view planet Mars 
 
 The following figure shows Mars Explorer at startup time.
 
-
+<img width="925" height="592" alt="image" src="https://github.com/user-attachments/assets/9f6665f0-7389-46b8-a97e-149d3a560c68" />
 
 *Figure 1* - The app showing the initial appearance of Mars.
 <br><br><br>
 
-
+<img width="925" height="592" alt="image" src="https://github.com/user-attachments/assets/1bd8e348-6bd3-4c54-aa54-163440f2a5f1" />
 
 *Figure 2* - Zooming in a bit and rotating Mars.
 <br><br><br>
 
+<img width="925" height="592" alt="image" src="https://github.com/user-attachments/assets/67472f1f-b906-43ca-9500-21fb3624343e" />
 
 *Figure 3* - A closeup of Mars.
 <br><br>
 
 The Mars image is actually made up of set of *tiles*. The tiles contain images from the **Cesium Mars** asset exposed by the online service **Cesium ion**. The Mars asset is built from NASA terrain and imagery. The resolution provides good visual quality as you zoom in. As you get closer and closer, the app retrieves higher and higher resolution tiles. Once you reach an altitude of about 500 km, Cesium ion doesn't have any higher resolution tiles so the app starts magnifying the existing tiles. This makes the image become increasingly blurry, as shown in the next figure.
 
-
+<img width="925" height="592" alt="image" src="https://github.com/user-attachments/assets/6af28c29-be3d-40f2-9883-95d8d7759820" />
 
 *Figure 4* - The Mars surface starts getting blurry if you zoom in too close.
 
@@ -43,13 +44,13 @@ To get access to Mars data, follow these steps:
 2. Go to ```https://ion.cesium.com/assetdepot``` to see all available assets.
 3. Search for the asset *Mars* and then click the "+" button, as shown in the following figure.
 
-
+<img width="1312" height="403" alt="image" src="https://github.com/user-attachments/assets/3f819014-92dd-4ccb-ad61-44779b7eb699" />
 
 *Figure 5* - Adding the Cesium Mars asset to your Cesium assets.
 <br><br>
 If now you go to your **My Assets** page, you should see the Cesium Mars asset listed with its asset ID, as shown in the next figure.
 
-
+<img width="1312" height="515" alt="image" src="https://github.com/user-attachments/assets/76d0b95d-3ce8-49fe-a152-e28c2a39d90f" />
 
 *Figure 6* - The newly added Cesium Mars asset in your asset list.
 
@@ -79,7 +80,7 @@ A 3D application is quite a bit more complicated than a typical app because ther
 Before getting too deep in the weeds, make sure you understand the components. The following figure shows the basic ones, as they apply to a WPF scene and the Mars Explorer.
 <p>
    
-
+<img width="883" height="207" alt="image" src="https://github.com/user-attachments/assets/6d125313-2761-4383-8694-0c1b3870586b" />
 
 *Figure 7* - The basic components of a 3D scene.
 
@@ -87,14 +88,14 @@ Before getting too deep in the weeds, make sure you understand the components. T
 
 The 3D scenery components listed above need a container to  host them. The following shows the WPF Window that hosts the viewport and other basic UI elements.
 
-
+<img width="725" height="474" alt="image" src="https://github.com/user-attachments/assets/96af4dda-719a-4cc3-acb4-c62f6f331c74" />
 
 *Figure 8* - The top level UI supporting the 3D framework.
 
 There are several more components involved that aren't shown because they are created programmatically or don't have a UI. Visible or not, most of them are required.
 The following figure shows the complete hierarchy.
 
-
+<img width="783" height="323" alt="image" src="https://github.com/user-attachments/assets/55569799-b194-4692-b47c-1f6c4a1e8e56" />
 
 *Figure 9* - The parts of the WPF application.
 
@@ -109,7 +110,7 @@ There are three basic tasks in this app to display Mars:
 Ironically, displaying the image is the simplest task. All you have to do is put the image data in the right format and WPF does the rest.
 The following sequence diagram shows how Mars Explorer retrieves and composes the 3D images.
 
-
+<img width="733" height="502" alt="image" src="https://github.com/user-attachments/assets/8cfc01ee-8ad8-4cd6-b023-b8a1bfe0fd21" />
 
 *Figure 10* - How images are downloaded and formatted for display.
 
@@ -209,7 +210,7 @@ public class MainWindow : Window
 
 Tilesets are essentially a hierarchy of tiles. At each level, the Mars area covered decreases as the resolution increases. The following figure shows the idea.
 
-
+<img width="1063" height="512" alt="image" src="https://github.com/user-attachments/assets/d266256b-499e-4bc5-9bfe-f214eb88756d" />
 
 *Figure 11* - How Tiles are made up by smaller and smaller tiles.
 
@@ -317,13 +318,13 @@ The combined value is commonly called ScreenSpaceError. The constant ```TilesetR
 ## Meshes
 3D objects aren't built out of thin air. They have a *skeleton* that supports the outer skin. The skeleton is built on a *mesh* structure, which is basically a scaffolding. The following figure shows a sample sphere with a mesh structure having 12 rings (for the latitude) and 24 segments (for the longitude).
 
-
+<img width="519" height="519" alt="image" src="https://github.com/user-attachments/assets/8e315b37-b289-4366-a226-c871fadb82bb" />
 
 *Figure 12* - A mesh structure for a sample sphere.
 
 Tiles are then laid over the meshes and yield a textured skin, as shown in the next figure.
 
-
+<img width="546" height="524" alt="image" src="https://github.com/user-attachments/assets/3dd14166-fde2-4e00-859c-3d1080755994" />
 
 *Figure 13* - A texture applied to the tiles laid over the mesh.
 
@@ -371,7 +372,7 @@ public class GlbReader
 Once all the meshes have been determined, you still don't have anything to display on the screen. The meshes are just an invisible scaffolding. Now you need to cover the meshes with something.
 That something is a *texture*. Textures are 2D images wrapped around a a 3D mesh. The following figure shows the texture for the entire Mars surface.
 
-
+<img width="2048" height="1024" alt="image" src="https://github.com/user-attachments/assets/e0fb3b1b-50ec-449a-9c5f-dc073b8bb392" />
 
 *Figure 14* - The texture for the entire Mars surface.
 
