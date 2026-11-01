@@ -381,7 +381,7 @@ A texture is an image that is mapped onto the surface of a mesh. Meshes are very
 1. The three (x,y,z) coordinates of the mesh vertices.
 2. The three (u, v) coordinates of the image vertices.
 
-But what are (u, v) coordinates? There are 2D coordinates on the texture image, normalized into the range (0,1). U represents the horizontal position in the texture, where 0 is the leftmost pixel and 1 is the rightmost. V represents the vertical position in the texture, where 0 is the topmost pixel and 1 the bottommost. The three (u,v) texture coordinates are read when the mesh (x,y,z) coordinates are read, although I didn't show that code in the previous listing. 
+But what are (u, v) coordinates? They are 2D coordinates on the texture image, normalized into the range (0,1). U represents the horizontal position in the texture, where 0 is the leftmost pixel and 1 is the rightmost. V represents the vertical position in the texture, where 0 is the topmost pixel and 1 the bottommost. The three (u,v) texture coordinates are read when the mesh (x,y,z) coordinates are read, although I didn't show that code in the previous listing. 
 <p><p>
 So for every mesh there is a texture mapped to it. The WPF 3D framework has built-in code to map each texture over the corresponding mesh. You basically create a '''GeometryModel3D''' and pass it the mesh and the image like this:
 
